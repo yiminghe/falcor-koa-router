@@ -6,8 +6,9 @@ falcor router middleware for koa
 
 ```js
 var router = require('falcor-koa-router');
+var mount = require('koa-mount');
 // array format referred to https://github.com/Netflix/falcor-router
-app.use('model.json', router.routes([
+app.use(mount('model.json', router.routes([
 {
   route: 'app',
   // generator function
@@ -34,5 +35,5 @@ app.use('model.json', router.routes([
     });
   }
 }
-]))
+])));
 ```

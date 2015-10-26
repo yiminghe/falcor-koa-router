@@ -1,6 +1,6 @@
 {
   "name": "falcor-koa-router",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "yiminghe@gmail.com",
   "description": "falcor router middleware for koa",
   "keywords": [
