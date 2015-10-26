@@ -1,6 +1,6 @@
 {
   "name": "falcor-koa-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "yiminghe@gmail.com",
   "description": "falcor router middleware for koa",
   "keywords": [
@@ -35,6 +35,7 @@
     "precommit-hook-eslint": "~3.0.0"
   },
   "dependencies": {
+    "co": "~4.6.0",
     "falcor-router": "~0.2.9",
     "object-assign": "~4.0.1"
   }
