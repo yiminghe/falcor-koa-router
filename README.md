@@ -22,13 +22,13 @@ app.use(mount('model.json', router.routes([
   }
 },
 {
-  router: 'app2',
+  route: 'app2',
   // promise
   get() {
     return new Promise(function(resolve) {
       setTimeout(function(){
         resolve({
-          path:[app2],
+          path:['app2'],
           value: 'xx'
         })
       },1000);
