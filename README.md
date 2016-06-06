@@ -2,38 +2,37 @@
 
 falcor router middleware for koa
 
+### Updated
+* Updated to latest falcor-router
+* Added unit tests
+* Updated to use koa@next
+* Remove generator usage
+
 ## usage
 
 ```js
-var router = require('falcor-koa-router');
-var mount = require('koa-mount');
-// array format referred to https://github.com/Netflix/falcor-router
-app.use(mount('model.json', router.routes([
-{
-  route: 'app',
-  // generator function
-  get: function* (){
-    yield wait(100);
-    return {
-      path: ['app'],
-      // this.ctx: koa context
-      value: this.ctx.url
-    };
-  }
-},
-{
-  route: 'app2',
-  // promise
-  get() {
-    return new Promise(function(resolve) {
-      setTimeout(function(){
-        resolve({
-          path:['app2'],
-          value: 'xx'
-        })
-      },1000);
-    });
-  }
-}
-])));
+import Koa from 'koa';
+import mount from 'koa-mount';
+import router from 'falcor-koa-router';
+
+app.use(mount('/', router.routes([
+      {
+        route: 'test',
+        get: (paths) => {
+          return new Promise((resolve, reject) => {
+            return resolve({
+              path: ['test'],
+              value: 'Hello Test'
+            });
+          });
+        },
+        set: (jsonGraph) => {
+          return {
+            path: ['test'],
+            value: jsonGraph.test
+          }
+        }
+      }
+    ])
+  ));
 ```

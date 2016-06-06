@@ -18,14 +18,15 @@ describe('dataSourceRoute', () => {
   app.use(mount('/', router.routes([
       {
         route: 'test',
-        get: () => {
-          return {
-            path: ['test'],
-            value: 'Hello Test'
-          }
+        get: (paths) => {
+          return new Promise((resolve, reject) => {
+            return resolve({
+              path: ['test'],
+              value: 'Hello Test'
+            });
+          });
         },
         set: (jsonGraph) => {
-          console.log(jsonGraph);
           return {
             path: ['test'],
             value: jsonGraph.test

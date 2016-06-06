@@ -49,6 +49,9 @@
       "es2015"
     ]
   },
+  "peerDependencies": {
+    "koa": "~2.0.0"
+  },
   "dependencies": {
     "co-body": "^4.2.0",
     "falcor-router": "^0.4.0"
