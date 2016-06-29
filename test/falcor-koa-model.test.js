@@ -3,40 +3,46 @@ import request from 'supertest';
 import Koa from 'koa';
 import mount from 'koa-mount';
 import FalcorRouter from 'falcor-router';
-import router from '../index';
+import router from '../lib';
 import falcor from 'falcor';
 import HttpDataSource from 'falcor-http-datasource';
 
 const expect = chai.expect;
+const app = new Koa();
+let server;
 
 describe('falcorModel', () => {
 
-  const app = new Koa();
+  before(() => {
+    app.on('error', (err) => {
+      console.error('server error', err)
+    });
 
-  app.on('error', err =>
-    console.error('server error', err)
-  );
-
-  app.use(mount('/demo', router.routes([
-      {
-        route: 'test',
-        get: () => {
-          return {
-            path: ['test'],
-            value: 'Hello Test'
-          }
-        },
-        set: (jsonGraph) => {
-          return {
-            path: ['test'],
-            value: jsonGraph.test
+    app.use(mount('/demo', router.routes([
+        {
+          route: 'test',
+          get: () => {
+            return {
+              path: ['test'],
+              value: 'Hello Test'
+            }
+          },
+          set: (jsonGraph) => {
+            return {
+              path: ['test'],
+              value: jsonGraph.test
+            }
           }
         }
-      }
-    ])
-  ));
+      ])
+    ));
 
-  app.listen(4000)
+    server = app.listen(4000, 'localhost');
+  });
+
+  after(() => {
+    server.close();
+  });
 
   it('should return response from model.get', done => {
     var test = new falcor.Model({
