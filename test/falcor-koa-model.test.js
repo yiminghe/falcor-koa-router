@@ -3,7 +3,7 @@ import request from 'supertest';
 import Koa from 'koa';
 import mount from 'koa-mount';
 import FalcorRouter from 'falcor-router';
-import router from '../lib';
+import router from '../dist';
 import falcor from 'falcor';
 import HttpDataSource from 'falcor-http-datasource';
 

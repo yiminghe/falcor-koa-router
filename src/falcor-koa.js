@@ -1,4 +1,4 @@
-import ctxToContext from './ctxToContext';
+import ctxToContext from './ctx-to-context';
 
 export default function dataSourceRoute(handler) {
   return async (ctx, next) => {

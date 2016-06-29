@@ -1,6 +1,6 @@
 {
   "name": "falcor-koa-router",
-  "version": "0.1.3",
+  "version": "2.0.0",
   "author": "yiminghe@gmail.com",
   "description": "falcor router middleware for koa",
   "keywords": [
@@ -8,19 +8,22 @@
     "router",
     "koa"
   ],
-  "main": "./lib",
+  "main": "./dist",
   "files": [
-    "lib"
+    "src",
+    "dist"
   ],
   "engines": {
     "node": ">=4.0.0"
   },
   "scripts": {
-    "build": "babel src --out-dir lib",
     "lint": "eslint src",
     "test": "mocha --compilers js:babel-register",
     "test:watch": "mocha --compilers js:babel-register --watch",
-    "prepare": "npm run lint && npm run build && npm run test"
+    "prepare": "npm run lint && npm run test",
+    "clean": "rm -rf dist",
+    "build": "node_modules/.bin/babel src --out-dir dist",
+    "prepublish": "npm run prepare && npm run clean && npm run build"
   },
   "license": "MIT",
   "repository": {
