@@ -8,6 +8,7 @@
     "router",
     "koa"
   ],
+  "main": "./lib",
   "files": [
     "lib"
   ],
