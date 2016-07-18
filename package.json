@@ -8,10 +8,10 @@
     "router",
     "koa"
   ],
-  "main": "./dist",
+  "main": "./lib",
   "files": [
     "src",
-    "dist"
+    "lib"
   ],
   "engines": {
     "node": ">=4.0.0"
