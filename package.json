@@ -21,8 +21,8 @@
     "test": "node_modules/.bin/mocha --compilers js:babel-register",
     "test:watch": "node_modules/.bin/mocha --compilers js:babel-register --watch",
     "prepare": "npm run lint && npm run test",
-    "clean": "node_modules/.bin/rimraf dist",
-    "build": "node_modules/.bin/babel src --out-dir dist",
+    "clean": "node_modules/.bin/rimraf lib",
+    "build": "node_modules/.bin/babel src --out-dir lib",
     "prepublish": "npm run prepare && npm run clean && npm run build"
   },
   "license": "MIT",
