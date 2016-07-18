@@ -1,39 +1,46 @@
 # falcor-koa-router
 
-falcor router middleware for koa
+Allows you to use Falcor routes with koa-mount (using the new async/await middleware syntax).
 
-## usage
+## Installation
+```
+$ npm install falcor-koa-router --save
+```
+
+## Example
 
 ```js
-var router = require('falcor-koa-router');
-var mount = require('koa-mount');
-// array format referred to https://github.com/Netflix/falcor-router
-app.use(mount('model.json', router.routes([
-{
-  route: 'app',
-  // generator function
-  get: function* (){
-    yield wait(100);
-    return {
-      path: ['app'],
-      // this.ctx: koa context
-      value: this.ctx.url
-    };
-  }
-},
-{
-  route: 'app2',
-  // promise
-  get() {
-    return new Promise(function(resolve) {
-      setTimeout(function(){
-        resolve({
-          path:['app2'],
-          value: 'xx'
-        })
-      },1000);
-    });
-  }
-}
-])));
+import Koa from 'koa';
+import mount from 'koa-mount';
+import router from 'falcor-koa-router';
+
+const app = new Koa();
+
+app.use(mount('/', router.routes([
+    {
+      route: 'test',
+      get: async (paths) => {
+        let value = await test('Hello Test');
+        return {
+          path: ['test'],
+          value: value
+        };
+      },
+      set: async (jsonGraph) => {
+        let text = jsonGraph.test;
+        let value = await test(text);
+        return {
+          path: ['test'],
+          value: value
+        }
+      }
+    }
+  ])
+));
+
+app.listen(3000, 'localhost');
+
 ```
+
+## License
+MIT
