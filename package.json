@@ -1,6 +1,6 @@
 {
   "name": "falcor-koa-router",
-  "version": "2.0.0",
+  "version": "2.0.0-alpha0",
   "author": "yiminghe@gmail.com",
   "description": "falcor router middleware for koa",
   "keywords": [
@@ -23,7 +23,7 @@
     "prepare": "npm run lint && npm run test",
     "clean": "node_modules/.bin/rimraf lib",
     "build": "node_modules/.bin/babel src --out-dir lib",
-    "prepublish": "npm run prepare && npm run clean && npm run build"
+    "pub": "npm run prepare && npm run clean && npm run build && npm publish --tag next"
   },
   "license": "MIT",
   "repository": {
@@ -49,7 +49,7 @@
     "koa": "^2.0.0",
     "koa-mount": "^2.0.0",
     "mocha": "^2.5.3",
-    "precommit-hook-eslint": "~3.0.0",
+    "pre-commit": "1.x",
     "rimraf": "^2.5.2",
     "supertest": "^1.2.0"
   },
