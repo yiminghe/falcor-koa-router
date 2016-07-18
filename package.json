@@ -1,6 +1,6 @@
 {
   "name": "falcor-koa-router",
-  "version": "2.0.0-alpha0",
+  "version": "2.0.0-alpha.0",
   "author": "yiminghe@gmail.com",
   "description": "falcor router middleware for koa",
   "keywords": [
@@ -23,7 +23,7 @@
     "prepare": "npm run lint && npm run test",
     "clean": "node_modules/.bin/rimraf lib",
     "build": "node_modules/.bin/babel src --out-dir lib",
-    "pub": "npm run prepare && npm run clean && npm run build && npm publish --tag next"
+    "pub": "npm run prepare && npm run clean && npm run build && npm publish --tag next && git push origin"
   },
   "license": "MIT",
   "repository": {
